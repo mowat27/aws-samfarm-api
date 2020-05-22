@@ -1,4 +1,4 @@
-Transform: 'AWS::Serverless-2016-10-31'
+Transform: "AWS::Serverless-2016-10-31"
 Parameters:
     SamMultipler:
         Description: "SAM multiplier. Make this really big to have a party :)"
@@ -11,15 +11,15 @@ Resources:
         Type: AWS::Serverless::Function
         Properties:
             Handler: index.handler
-            Runtime: nodejs4.3
+            Runtime: nodejs12.x
             CodeUri: ./
             Environment:
                 Variables:
                     SAM_MULTIPLIER: !Ref SamMultipler
                     ORIGIN_URL: !Ref OriginUrl
             Events:
-              GetResource:
-                Type: Api
-                Properties:
-                  Path: /sam
-                  Method: get
+                GetResource:
+                    Type: Api
+                    Properties:
+                        Path: /sam
+                        Method: get
